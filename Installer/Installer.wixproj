@@ -40,6 +40,6 @@
       <SuppressRegistry>true</SuppressRegistry>
     </HarvestDirectory>
   </ItemGroup>
-  <!-- congigure the project to sign the installer. Comment this line to produce an unsigned installer. -->
-  <Import Project=".\Installer.sign" Condition=" '$(Configuration)' == 'Release' " />
+  <!-- congigure the project to sign the installer. Without Installer.sign (e.g. on forks) an unsigned installer is produced. -->
+  <Import Project=".\Installer.sign" Condition=" '$(Configuration)' == 'Release' And Exists('$(MSBuildThisFileDirectory)Installer.sign') " />
 </Project>
